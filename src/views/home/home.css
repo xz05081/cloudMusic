@@ -1,15 +1,19 @@
+.Container {
+    background-color: #ececec;
+}
+
 /* 侧边栏区域 */
 .Sidebar {
     height: 100vh;
     width: 200px;
     position: fixed;
-    background-color: aqua;
+    background-color: #214F84;
 }
 
 /* 头部区域 */
 .header {
     height: 100px;
-    width: 88%;
+    width: 89%;
     margin-left: 205px;
     background-color: bisque;
 }
@@ -18,7 +22,8 @@
 .content {
     margin-left: 205px;
     margin-top: 10px;
-    width: 88%;
+    width: 89%;
     height: 88vh;
-    background-color: blueviolet;
+    background-color: white;
+    box-shadow: 1px 1px 1px whitesmoke;
 }
