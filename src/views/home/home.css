@@ -1,0 +1,24 @@
+/* 侧边栏区域 */
+.Sidebar {
+    height: 100vh;
+    width: 200px;
+    position: fixed;
+    background-color: aqua;
+}
+
+/* 头部区域 */
+.header {
+    height: 100px;
+    width: 88%;
+    margin-left: 205px;
+    background-color: bisque;
+}
+
+/* 内容区域 */
+.content {
+    margin-left: 205px;
+    margin-top: 10px;
+    width: 88%;
+    height: 88vh;
+    background-color: blueviolet;
+}

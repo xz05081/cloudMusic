@@ -1,8 +1,9 @@
 import "./App.css";
-import Login from "./views/login/login.jsx";
+import Login from "./views/login/login";
+import Home from "./views/home/home";
 
 function App() {
-  return <Login></Login>;
+  return <Home></Home>;
 }
 
 export default App;
