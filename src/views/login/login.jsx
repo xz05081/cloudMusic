@@ -3,6 +3,7 @@ import { Button, Checkbox, Form, Input } from "antd";
 import "./login.css";
 
 export default function login() {
+  // 登录成功的方法
   const onFinish = (values) => {
     console.log("Success:", values);
   };

@@ -121,6 +121,8 @@ export default function home() {
       {/* 内容区域 */}
       <div className="content">
         <Routes>
+          {/* 第一个是路由的重定向 */}
+          <Route index element={<PlayList></PlayList>}></Route>
           <Route path="/playlist" element={<PlayList></PlayList>}></Route>
           <Route path="/carousel" element={<Carousel></Carousel>}></Route>
           <Route path="/blog" element={<Blog></Blog>}></Route>
