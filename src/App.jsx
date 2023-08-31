@@ -18,8 +18,8 @@ function App() {
 
   return (
     <Routes>
-      <Route path="*" Component={Home} exact></Route>
-      <Route path="/login" Component={Login}></Route>
+      <Route path="*" element={<Home></Home>} exact></Route>
+      <Route path="/login" element={<Login></Login>}></Route>
     </Routes>
   );
 }
