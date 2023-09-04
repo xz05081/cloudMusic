@@ -22,7 +22,7 @@ export const handlePlayInfo = (playInfo) => {
   return async (dispatch) => {
     try {
       // 操作数据
-      const res = await processPlayInfo(playInfo);
+      await processPlayInfo(playInfo);
       // 重新获取数据
       dispatch(fetchPlayList());
     } catch (error) {
