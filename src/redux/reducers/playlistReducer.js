@@ -6,7 +6,6 @@ const initPlaylist = {
   playList: [],
 };
 const playListReducer = (state = initPlaylist, action) => {
-  console.log(action);
   switch (action.type) {
     case "FETCHPLAYLIST":
       return {
