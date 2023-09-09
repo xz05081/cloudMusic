@@ -1,4 +1,5 @@
 import { getPlaylist, processPlayInfo } from "../../api/playlist";
+import { message } from "antd";
 
 // 获取歌单列表的actions
 export const fetchPlayList = () => {
@@ -23,6 +24,9 @@ export const handlePlayInfo = (playInfo) => {
     try {
       // 操作数据
       await processPlayInfo(playInfo);
+      message.success(
+        `${playInfo.action == "edit" ? "编辑成功" : "删除成功"} `
+      );
       // 重新获取数据
       dispatch(fetchPlayList());
     } catch (error) {

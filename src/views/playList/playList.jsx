@@ -4,12 +4,21 @@ import {
   fetchPlayList,
   handlePlayInfo,
 } from "../../redux/actions/playlistAction";
-import { Space, Table, Button, Modal, Form, Input } from "antd";
+import {
+  Space,
+  Table,
+  Button,
+  Modal,
+  Form,
+  Input,
+  Popconfirm,
+  message,
+} from "antd";
 
 export default function PlayList() {
   // react-redux的hook方法
   // 获取歌单列表
-  const { playList } = useSelector((state) => state.playlist);
+  const playList = useSelector((state) => state?.playlist?.playList);
   const dispatch = useDispatch();
 
   // 编辑的切换的布尔值
@@ -41,9 +50,20 @@ export default function PlayList() {
       render: (text, record) => (
         <Space size="small">
           <Button onClick={() => handleEdit(record.key)}>编辑</Button>
-          <Button type="primary" danger>
-            删除
-          </Button>
+          <Popconfirm
+            title="删除"
+            description="你确定删除吗？"
+            onConfirm={() => handleConfirm(record.key)}
+            onCancel={() => {
+              message.error("click on 取消");
+            }}
+            okText="确定"
+            cancelText="取消"
+          >
+            <Button type="primary" danger>
+              删除
+            </Button>
+          </Popconfirm>
         </Space>
       ),
     },
@@ -53,11 +73,7 @@ export default function PlayList() {
   // 加载效果的布尔值
   const [loading, setLoading] = useState(true);
   // Modal的编辑信息
-  const [playInfo, setPlayInfo] = useState({
-    _id: "",
-    name: "",
-    action: "",
-  });
+  const [playInfo, setPlayInfo] = useState({});
 
   // 挂载
   useEffect(() => {
@@ -66,7 +82,7 @@ export default function PlayList() {
 
   // playList更新时执行---更新的操作
   useEffect(() => {
-    const updatedData = playList.map((item, index) => {
+    const updatedData = playList?.map((item, index) => {
       return {
         _id: item._id,
         key: index + 1,
@@ -107,12 +123,29 @@ export default function PlayList() {
     console.log(playInfo);
   };
 
-  // 弹出框确定的按钮
+  // 弹出框确定的按钮---就是表单的删除功能
   const handleOk = () => {
     // 处理数据
     dispatch(handlePlayInfo(playInfo));
+    // 重置数据
+    setPlayInfo({});
     // 关闭对话框
     setOpen(false);
+  };
+
+  // 气泡确认框的确认---就是删除功能的实现
+  const handleConfirm = (key) => {
+    // 获取删除的数据
+    let deleteData = data.find((item) => {
+      return key == item.key;
+    });
+    // 整理删除的数据，并且重新删除数据
+    let newDeleteData = {
+      _id: deleteData._id,
+      action: "delete",
+    };
+    // 发请求
+    dispatch(handlePlayInfo(newDeleteData));
   };
 
   return (
